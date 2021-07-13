@@ -22,16 +22,18 @@ var countNodes = function (root) {
 		return 0
 	}
 
+	let lh = 0
+	let rh = 0
 	let left = root.left
 	let right = root.right
-	let lh = rh = 0
+
 	while (left) {
-		left = left.left
 		lh += 1
+		left = left.left
 	}
 	while (right) {
+		rh += 1
 		right = right.right
-		rh + 1
 	}
 	if (lh === rh) {
 		return Math.pow(2, lh + 1) - 1

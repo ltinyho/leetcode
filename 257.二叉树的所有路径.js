@@ -22,25 +22,22 @@ var binaryTreePaths = function (root) {
 		return []
 	}
 	let res = []
-	let stack = []
-	let pathSt = []
-	stack.push(root)
-	pathSt.push(String(root.val))
-	while (stack.length) {
-		let node = stack.pop()
-		let path = pathSt.pop()
-		if (!node.left && !node.right) {
-			res.push(path)
-		}
-		if (node.right) {
-			stack.push(node.right)
-			pathSt.push(path + "->" + String(node.right.val))
-		}
-		if (node.left) {
-			stack.push(node.left)
-			pathSt.push(path + "->" + String(node.left.val))
-		}
-	}
+	help(root, "", res)
 	return res
 };
+
+
+function help(root, path, res) {
+	if (!root) {
+		return
+	}
+	path += root.val
+	if (!root.left && !root.right) {
+		res.push(path)
+		return
+	}
+	help(root.left, path + "->", res)
+	help(root.right, path + "->", res)
+	return
+}
 // @lc code=end

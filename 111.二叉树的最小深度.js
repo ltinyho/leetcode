@@ -21,28 +21,16 @@ var minDepth = function (root) {
 	if (!root) {
 		return 0
 	}
-	let q = []
-	q.push(root)
-	let min =0
-	while (q.length) {
-		min += 1
-		let len = q.length
-		for (let i = 0; i < len; i++) {
-			const node = q.shift();
-			if (!node.left && !node.right) {
-				return  min
-			}
-
-			if (node.left) {
-				q.push(node.left)
-			}
-			if (node.right) {
-				q.push(node.right)
-			}
-			
-		}
+	let left = minDepth(root.left)
+	let right = minDepth(root.right)
+	if (!root.left && root.right) {
+		return 1 + left
 	}
-	return min
+	if (root.left && !root.right) {
+		return 1 + right
+	}
+	return 1 + Math.min(left, right)
 };
+
 // @lc code=end
 

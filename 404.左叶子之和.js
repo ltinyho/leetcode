@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode.cn id=104 lang=javascript
+ * @lc app=leetcode.cn id=404 lang=javascript
  *
- * [104] 二叉树的最大深度
+ * [404] 左叶子之和
  */
 
 // @lc code=start
@@ -17,27 +17,27 @@
  * @param {TreeNode} root
  * @return {number}
  */
-var maxDepth = function (root) {
+var sumOfLeftLeaves = function (root) {
 	if (!root) {
 		return 0
 	}
 	let res = 0
-	function help(root, depth) {
-		res = Math.max(res, depth)
-		if (!root.left && !root.right) {
-			return
+	let stack = []
+	stack.push(root)
+	while (stack.length) {
+		let node = stack.pop()
+		if (node.left && !node.left.left && !node.left.right) {
+			res += node.left.val
 		}
-		if (root.left) {
-			help(root.left, depth + 1)
+		if (node.right) {
+			stack.push(node.right)
 		}
-		if (root.right) {
-			help(root.right, depth + 1)
+		if (node.left) {
+			stack.push(node.left)
 		}
 	}
-	help(root, 1)
 	return res
-};
-
+}
 
 
 
