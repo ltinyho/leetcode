@@ -26,7 +26,6 @@ var binaryTreePaths = function (root) {
 	return res
 };
 
-
 function help(root, path, res) {
 	if (!root) {
 		return
@@ -38,6 +37,6 @@ function help(root, path, res) {
 	}
 	help(root.left, path + "->", res)
 	help(root.right, path + "->", res)
-	return
 }
+
 // @lc code=end

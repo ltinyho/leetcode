@@ -21,13 +21,13 @@ var sumOfLeftLeaves = function (root) {
 	if (!root) {
 		return 0
 	}
-	let res = 0
+	let sum = 0
 	let stack = []
 	stack.push(root)
 	while (stack.length) {
 		let node = stack.pop()
 		if (node.left && !node.left.left && !node.left.right) {
-			res += node.left.val
+			sum += node.left.val
 		}
 		if (node.right) {
 			stack.push(node.right)
@@ -36,7 +36,7 @@ var sumOfLeftLeaves = function (root) {
 			stack.push(node.left)
 		}
 	}
-	return res
+	return sum
 }
 
 
