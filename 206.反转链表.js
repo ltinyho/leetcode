@@ -21,12 +21,13 @@ var reverseList = function (head) {
 };
 
 function reverse(prev, cur) {
-	if (!cur) {
-		return prev
+	while (cur) {
+		let tmp = cur.next
+		cur.next = prev
+		prev = cur
+		cur = tmp
 	}
-	let tmp = cur.next
-	cur.next = prev
-	return reverse(cur, tmp)
+	return prev
 }
 // @lc code=end
 

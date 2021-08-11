@@ -5,7 +5,18 @@
  */
 
 // @lc code=start
-func reverseString(s []byte) {
+func reverseString(s string, k int) string {
+	if len(s) == 0 || k < 0 {
+		return s
+	}
+	b := []byte(s)
+	reverse(b[0:k])
+	reverse(b[k:len(b)])
+	reverse(b)
+	return string(b)
+}
+
+func reverse(s []byte) {
 	i := 0
 	j := len(s) - 1
 	for i < j {
