@@ -39,6 +39,7 @@ func isNormalIp(s string, sta, end int) bool {
 	}
 	return true
 }
+alias proxy="export https_proxy=http://192.168.3.100:7891;export http_proxy=http://192.168.3.100:7891;export all_proxy=socks5://192.168.3.100:7890"
 
+alias unproxy="unset http_proxy='';unset https_proxy='';"
 // @lc code=end
-
